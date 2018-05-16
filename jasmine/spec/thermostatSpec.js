@@ -24,5 +24,37 @@ describe('Thermostat', function () {
         thermostat.temperatureDown(11)
       }).toThrow('Minimum temperature is 10 degrees');
     });
+    it('should prevent temperature from rising above 25 when power saver is on', function(){
+      expect(function(){
+        thermostat.temperatureUp(6)
+      }).toThrow('Maximum temperature is 25 degrees');
+    });
+    it('should prevent temperature from rising above 32 when power saver is off', function(){
+      thermostat.switchOff();
+      expect(function(){
+        thermostat.temperatureUp(13)
+      }).toThrow('Maximum temperature is 32 degrees');
+    });
+  });
+
+  describe('Power saving mode', function(){
+    afterEach(function() {
+      thermostat.powerSaver = true;
+    });
+    it('be set to on by default', function(){
+      expect(thermostat.powerSaver).toBeTruthy();
+    });
+
+    it('should switch off', function(){
+      thermostat.switchOff();
+      expect(thermostat.powerSaver).toBeFalsy();
+    });
+
+    it('should switch on', function(){
+      thermostat.switchOff();
+      thermostat.switchOn();
+      expect(thermostat.powerSaver).toBeTruthy();
+    });
+
   });
 });
