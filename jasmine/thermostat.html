@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <title>THERMOSTAT</title>
+  <script src='src/thermostat.js'></script>
+</head>
+<body>
+  <p> Temperature Control </p>
+  <input type='range' min='10' max='32' value='20' class='slider'>
+  <p> Current Temperature </p>
+  <fieldset>
+  <legend>Power Saver</legend>
+  <div>
+    <input type="radio" id="PowerSaverOn" name="Power Saver" value="On" checked>
+    <label for="PowerSaverOn">On</label>
+  </div>
+  <div>
+    <input type="radio" id="PowerSaverOff" name="Power Saver" value="Off">
+    <label for="PowerSaverOff">Off</label>
+  </div>
+</fieldset>
+  <div>
+    <input type="button" id="Reset" value="Reset">
+  </div>
+</fieldset>
+</body>
+</html>
