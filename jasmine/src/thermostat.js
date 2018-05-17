@@ -18,6 +18,7 @@ Thermostat.prototype.temperatureUp = function (number) {
     var limit = MAX_TEMP_NOPOWERSAVER;
   };
   if(this.temperature + number > limit){
+    this.temperature = limit;
     throw 'Maximum temperature is ' + limit + ' degrees';
   };
   this.temperature += number;
@@ -25,6 +26,7 @@ Thermostat.prototype.temperatureUp = function (number) {
 
 Thermostat.prototype.temperatureDown = function (number) {
   if (this.temperature - number < MIN_TEMP) {
+    this.temperature = MIN_TEMP;
     throw 'Minimum temperature is 10 degrees'
   }
   this.temperature -= number;
