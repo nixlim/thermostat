@@ -39,6 +39,7 @@ $(document).ready(function(){
   $('#Reset').click(function () {
     thermostat.resetTemperature();
     $('.temperature-display').html(thermostat.temperature);
+    $('.slider').val(thermostat.temperature);
   })
 
 });
