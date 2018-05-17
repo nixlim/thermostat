@@ -4,7 +4,7 @@ $(document).ready(function(){
   $('.slider').val(thermostat.temperature);
   $('.temperature-display').html(thermostat.temperature);
 
-  $.get('http://api.openweathermap.org/data/2.5/forecast?id=2643743&units=metric&APPID=9b17508b9c89e36716d8257b41b462bb', function (response) {
+  $.get('http://api.openweathermap.org/data/2.5/weather?id=2643743&units=metric&APPID=9b17508b9c89e36716d8257b41b462bb', function (response) {
     console.log(response);
   });
 
