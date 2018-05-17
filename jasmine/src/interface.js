@@ -3,9 +3,7 @@ $(document).ready(function(){
 
   function upOrDown (value) {
     if (value - thermostat.temperature > 0) {
-      try {
-        thermostat.temperatureUp(value-thermostat.temperature);
-      }
+      try { thermostat.temperatureUp(value-thermostat.temperature); }
       catch (e) {
         $('.error_message').html(e).fadeOut(1000, function () {
           $('.error_message').html('').fadeIn();
@@ -13,11 +11,11 @@ $(document).ready(function(){
       }
 
     } else {
-      try {
-        thermostat.temperatureDown(thermostat.temperature-value);
-      }
+      try { thermostat.temperatureDown(thermostat.temperature-value); }
       catch (e) {
-        $('.error_message').html(e);
+        $('.error_message').html(e).fadeOut(1000, function () {
+          $('.error_message').html('').fadeIn();
+        });
       }
     }
   }
@@ -32,6 +30,12 @@ $(document).ready(function(){
 
   $('.temperature-display').html(thermostat.temperature);
 
+  $('#PowerSaverOn').click(function(){
+      thermostat.switchOn()
+    });
 
+  $('#PowerSaverOff').click(function(){
+      thermostat.switchOff()
+    });
 
 });

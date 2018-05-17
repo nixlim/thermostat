@@ -11,18 +11,18 @@
 
 <body>
   <p> Temperature Control </p>
-  <input type='range' min='10' max='32' value='20' class='slider'>
+  <input type='range' min='0' max='50' value='20' class='slider'>
   <p> Current Temperature </p>
   <p class='temperature-display'>0</p>
   <p class="error_message"> </p>
   <fieldset>
   <legend>Power Saver</legend>
   <div>
-    <input type="radio" id="PowerSaverOn" name="Power Saver" value="On" checked>
+    <input class="PSM" type="radio" id="PowerSaverOn" name="Power Saver" value="On" checked>
     <label for="PowerSaverOn">On</label>
   </div>
   <div>
-    <input type="radio" id="PowerSaverOff" name="Power Saver" value="Off">
+    <input class="PSM" type="radio" id="PowerSaverOff" name="Power Saver" value="Off">
     <label for="PowerSaverOff">Off</label>
   </div>
 </fieldset>
