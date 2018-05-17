@@ -2,12 +2,18 @@
 <html>
 <head>
   <title>THERMOSTAT</title>
+  <script src='public/jquery-3.3.1.min.js'></script>
   <script src='src/thermostat.js'></script>
+  <script src='src/interface.js'></script>
+ <link href='./public/css/thermostat_style.css' rel="stylesheet" type="text/css">
 </head>
+
+
 <body>
   <p> Temperature Control </p>
   <input type='range' min='10' max='32' value='20' class='slider'>
   <p> Current Temperature </p>
+  <p class='temperature-display'>0</p>
   <fieldset>
   <legend>Power Saver</legend>
   <div>
