@@ -27,6 +27,7 @@ $(document).ready(function(){
     upOrDown(sliderTempValue);
     $('.temperature-display').html(thermostat.temperature);
     $('.slider').val(thermostat.temperature);
+    $('body').attr('class', thermostat.energyUse());
   });
 
   $('#PowerSaverOn').click(function(){
@@ -40,6 +41,9 @@ $(document).ready(function(){
     thermostat.resetTemperature();
     $('.temperature-display').html(thermostat.temperature);
     $('.slider').val(thermostat.temperature);
+    $('body').attr('class', thermostat.energyUse());
   })
+
+    $('body').attr('class', thermostat.energyUse());
 
 });

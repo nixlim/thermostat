@@ -1,3 +1,9 @@
-body {
-  color: red;
+.high-usage {
+  background-color: red;
+}
+.medium-usage {
+  background-color: yellow;
+}
+.low-usage {
+  background-color: blue;
 }
