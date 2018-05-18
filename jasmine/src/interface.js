@@ -1,19 +1,25 @@
 
 
 
-window.onload = function(){
+$(document).ready(function () {
   var thermostat = new Thermostat();
 
-  $.getJSON('http://localhost:9292/', function (data) {
-    thermostat.temperature = data.temp;
-    thermostat.powerSaver = data.mode;
-    $('.slider').val(thermostat.temperature);
-    $('.temperature-display').html(thermostat.temperature);
-    $('body').attr('class', thermostat.energyUse());
-    if (thermostat.powerSaver == "false") {
-       $('#PowerSaverOff').attr("checked", true);
-    } else { $('#PowerSaverOn').attr("checked", true);}
-  });
+  function reloadThis () {
+    $.getJSON('http://localhost:9292/', function (data) {
+      thermostat.temperature = data.temp;
+      thermostat.powerSaver = data.mode;
+      $('.slider').val(thermostat.temperature);
+      $('.temperature-display').html(thermostat.temperature);
+      $('body').attr('class', thermostat.energyUse());
+      if (thermostat.powerSaver == "false") {
+        $('#PowerSaverOff').attr("checked", true);
+      } else { $('#PowerSaverOn').attr("checked", true);}
+    });
+  }
+
+  reloadThis();
+
+
 
   $('.weatherButton').click(function(){
     var city = $('.city').val();
@@ -67,14 +73,17 @@ window.onload = function(){
     thermostat.switchOff()
     ghostBusters();
     });
+
   $('#Reset').click(function () {
     thermostat.resetTemperature();
+    thermostat.switchOn();
     $('.temperature-display').html(thermostat.temperature);
     $('.slider').val(thermostat.temperature);
     $('body').attr('class', thermostat.energyUse());
     ghostBusters();
-  })
+    reloadThis();
+  });
 
     $('body').attr('class', thermostat.energyUse());
-  
-};
+
+});
