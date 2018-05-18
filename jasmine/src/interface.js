@@ -13,6 +13,10 @@ $(document).ready(function(){
     $('.slider').val(thermostat.temperature);
     $('.temperature-display').html(thermostat.temperature);
     $('body').attr('class', thermostat.energyUse());
+    console.log(data.mode)
+    if (thermostat.powerSaver == "false") {
+       $('#PowerSaverOff').attr("checked", true);
+    } else { $('#PowerSaverOn').attr("checked", true);}
   });
 
 
