@@ -1,7 +1,7 @@
 
 
 
-$(document).ready(function(){
+window.onload = function(){
   var thermostat = new Thermostat();
 
   $.getJSON('http://localhost:9292/', function (data) {
@@ -10,14 +10,10 @@ $(document).ready(function(){
     $('.slider').val(thermostat.temperature);
     $('.temperature-display').html(thermostat.temperature);
     $('body').attr('class', thermostat.energyUse());
-    console.log(data.mode);
     if (thermostat.powerSaver == "false") {
        $('#PowerSaverOff').attr("checked", true);
     } else { $('#PowerSaverOn').attr("checked", true);}
   });
-
-
-
 
   $('.weatherButton').click(function(){
     var city = $('.city').val();
@@ -34,7 +30,6 @@ $(document).ready(function(){
   function ghostBusters () {
     $.post('http://localhost:9292/', {temperature: thermostat.temperature, mode: thermostat.powerSaver});
   }
-
 
   function upOrDown (value) {
     if (value - thermostat.temperature > 0) {
@@ -81,7 +76,5 @@ $(document).ready(function(){
   })
 
     $('body').attr('class', thermostat.energyUse());
-
-
-
-});
+  
+};
