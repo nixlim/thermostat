@@ -4,16 +4,13 @@
 $(document).ready(function(){
   var thermostat = new Thermostat();
 
-  $('.slider').val(thermostat.temperature);
-  $('.temperature-display').html(thermostat.temperature);
-
   $.getJSON('http://localhost:9292/', function (data) {
     thermostat.temperature = data.temp;
     thermostat.powerSaver = data.mode;
     $('.slider').val(thermostat.temperature);
     $('.temperature-display').html(thermostat.temperature);
     $('body').attr('class', thermostat.energyUse());
-    console.log(data.mode)
+    console.log(data.mode);
     if (thermostat.powerSaver == "false") {
        $('#PowerSaverOff').attr("checked", true);
     } else { $('#PowerSaverOn').attr("checked", true);}
@@ -23,7 +20,7 @@ $(document).ready(function(){
 
 
   $('.weatherButton').click(function(){
-    var city = $('.city').val()
+    var city = $('.city').val();
     $.get('http://api.openweathermap.org/data/2.5/weather?q='+ city +'&units=metric&APPID=9b17508b9c89e36716d8257b41b462bb', function (response) {
 
       $('.cityName').html(response.name);
