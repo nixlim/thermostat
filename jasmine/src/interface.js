@@ -4,6 +4,10 @@ $(document).ready(function(){
   $('.slider').val(thermostat.temperature);
   $('.temperature-display').html(thermostat.temperature);
 
+  $.getJSON('http://localhost:9292/', function (data) {
+    console.log(data)
+  });
+
 
 
   $('.weatherButton').click(function(){
