@@ -4,9 +4,20 @@ $(document).ready(function(){
   $('.slider').val(thermostat.temperature);
   $('.temperature-display').html(thermostat.temperature);
 
-  $.get('http://api.openweathermap.org/data/2.5/weather?id=2643743&units=metric&APPID=9b17508b9c89e36716d8257b41b462bb', function (response) {
-    $('.cityTemp').html(response.main.temp);
+
+
+  $('.weatherButton').click(function(){
+    var city = $('.city').val()
+    $.get('http://api.openweathermap.org/data/2.5/weather?q='+ city +'&units=metric&APPID=9b17508b9c89e36716d8257b41b462bb', function (response) {
+
+      $('.cityName').html(response.name);
+      $('.cityTemp').html(response.main.temp);
+    })
+    .fail(function() {
+      alert("city not available, please try again")
+    })
   });
+
 
   function upOrDown (value) {
     if (value - thermostat.temperature > 0) {
@@ -49,5 +60,7 @@ $(document).ready(function(){
   })
 
     $('body').attr('class', thermostat.energyUse());
+
+
 
 });

@@ -10,8 +10,7 @@
 
 
 <body>
-  <p>London</p>
-  <p class="cityTemp"> </p>
+
   <p> Temperature Control </p>
   <input type='range' min='0' max='50' value='20' class='slider'>
   <p> Current Temperature </p>
@@ -32,5 +31,15 @@
     <input type="button" id="Reset" value="Reset">
   </div>
 </fieldset>
+<div class="cityform">
+  <label for="city">Enter your city name for your local weather</label>
+  <input type="text" class="city">
+  <input type="button" class="weatherButton" value="Find City">
+</div>
+<div>
+  <p class="cityName"> </p>
+  <p class="cityTemp"> </p>
+</div>
+
 </body>
 </html>
