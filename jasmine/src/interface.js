@@ -8,6 +8,8 @@ $(document).ready(function(){
     console.log(data)
   });
 
+  $.post('http://localhost:9292/', {temperature: thermostat.temperature, mode: thermostat.powerSaver});
+
 
 
   $('.weatherButton').click(function(){
