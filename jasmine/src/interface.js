@@ -1,3 +1,6 @@
+
+
+
 $(document).ready(function(){
   var thermostat = new Thermostat();
 
@@ -5,10 +8,13 @@ $(document).ready(function(){
   $('.temperature-display').html(thermostat.temperature);
 
   $.getJSON('http://localhost:9292/', function (data) {
-    console.log(data)
+    thermostat.temperature = data.temp;
+    thermostat.powerSaver = data.mode;
+    $('.slider').val(thermostat.temperature);
+    $('.temperature-display').html(thermostat.temperature);
+    $('body').attr('class', thermostat.energyUse());
   });
 
-  $.post('http://localhost:9292/', {temperature: thermostat.temperature, mode: thermostat.powerSaver});
 
 
 
@@ -23,6 +29,10 @@ $(document).ready(function(){
       alert("city not available, please try again")
     })
   });
+
+  function ghostBusters () {
+    $.post('http://localhost:9292/', {temperature: thermostat.temperature, mode: thermostat.powerSaver});
+  }
 
 
   function upOrDown (value) {
@@ -49,20 +59,24 @@ $(document).ready(function(){
     $('.temperature-display').html(thermostat.temperature);
     $('.slider').val(thermostat.temperature);
     $('body').attr('class', thermostat.energyUse());
+    ghostBusters();
   });
 
   $('#PowerSaverOn').click(function(){
-      thermostat.switchOn()
+    thermostat.switchOn()
+    ghostBusters();
     });
 
   $('#PowerSaverOff').click(function(){
-      thermostat.switchOff()
+    thermostat.switchOff()
+    ghostBusters();
     });
   $('#Reset').click(function () {
     thermostat.resetTemperature();
     $('.temperature-display').html(thermostat.temperature);
     $('.slider').val(thermostat.temperature);
     $('body').attr('class', thermostat.energyUse());
+    ghostBusters();
   })
 
     $('body').attr('class', thermostat.energyUse());
